@@ -38,6 +38,8 @@ public interface Tick {
 	Double averagePrice();
 
 	Double lastPrice();
+	
+	Double openPrice();
 
 	Double closePrice();
 
@@ -46,6 +48,10 @@ public interface Tick {
 	Double settlementPrice();
 
 	Double preSettlementPrice();
+	
+	Boolean isEndOfDay();
+	
+	Boolean isRealTime();
 
 	Instant updateTime();
 

@@ -1,7 +1,7 @@
 HOPE - Homogeneous Order Processing Environment
 
 HOPE has a complete set of tools to automate your  trading  in financial
-market. Its core components include order/ subaccount  management, stick
+market. Its core components include order/ subaccount management, candle
 generation, risk management, strategy deployment and back testing.
 
 HOPE is built on top of JMS and  speaks FIX with clients. All its  third
