@@ -87,9 +87,9 @@ public interface InternalOrder extends Order {
 	
 	void clientId(String s);
 	
-	String exchangeInstId();
+	String exchangeSymbol();
 	
-	void exchangeInstId(String s);
+	void exchangeSymbol(String s);
 	
 	String traderId();
 	
