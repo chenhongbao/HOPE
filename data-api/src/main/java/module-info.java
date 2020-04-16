@@ -2,5 +2,6 @@
  * @author Hongbao Chen
  *
  */
-module com.nabiki.hope.common.data.api {
+module hope.common.data.api {
+	exports com.nabiki.hope.common.data;
 }
