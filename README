@@ -4,13 +4,13 @@ HOPE has a complete set of tools to automate your  trading  in financial
 market. Its core components include order/ subaccount management, candle
 generation, risk management, strategy deployment and back testing.
 
-HOPE is built on top of JMS and  speaks FIX with clients. All its  third
+HOPE is built on top of JMS and speaks FIX[1]  with clients. All its 3rd
 party dependencies are open source:
 
-1. Derby - store user profiles, account settings, position/ transaction.
-2. Jetty - Browser-based UI for management.
-3. CSV lib - store/read historical market data.
-4. QuickFix/J - process FIX protocol, initiator/acceptor model.
+1. Derby[2] - keep user profiles, account setting, position/transaction.
+2. Jetty[3] - Browser-based UI for management.
+3. Common CSV[4] - store/read historical market data.
+4. QuickFIX/J[5] - process FIX protocol, initiator/acceptor model.
 
 Before you start with it, you need to encode the outside data into FIX
 format according to the GUIDE, or decode downstream data from FIX format
@@ -23,3 +23,12 @@ Lucky with your trades.
                                                             Hongbao Chen
                                                  chenhongbao@outlook.com
                                                               2020-04-15
+                                                              
+References
+
+[1] FIX(Financial Information eXchange), https://www.fixtrading.org/
+[2] Apache Derby, http://db.apache.org/derby/
+[3] Eclipse Jetty, https://www.eclipse.org/jetty/
+[4] Apache Common CSV, https://commons.apache.org/proper/commons-csv/
+[5] QuickFIX/J, https://quickfixj.org/ , whose reference is the QuickFIX
+    engine, http://www.quickfixengine.org/
