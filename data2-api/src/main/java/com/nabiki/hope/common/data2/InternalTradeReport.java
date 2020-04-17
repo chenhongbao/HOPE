@@ -25,7 +25,7 @@ public interface InternalTradeReport extends TradeReport {
 	
 	void symbol(String s);
 	
-	void orderReference(String s);
+	void orderId(String s);
 	
 	String userId();
 	
@@ -34,8 +34,6 @@ public interface InternalTradeReport extends TradeReport {
 	String exchangeId();
 	
 	void exchangeId(String s);
-	
-	String tradeId();
 	
 	void tradeId(String s);
 	

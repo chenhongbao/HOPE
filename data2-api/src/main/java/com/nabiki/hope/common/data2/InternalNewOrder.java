@@ -20,9 +20,9 @@ public interface InternalNewOrder extends NewOrder {
 	
 	void investorId(String s);
 	
-	String orderReference();
+	String orderId();
 	
-	void orderReference(String s);
+	void orderId(String s);
 	
 	String userId();
 	

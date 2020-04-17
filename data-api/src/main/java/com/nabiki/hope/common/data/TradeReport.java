@@ -10,7 +10,9 @@ import java.util.Date;
  *
  */
 public interface TradeReport {
-	String orderReference();
+	String orderId();
+	
+	String tradeId();
 	
 	TokenByte direction();
 	
@@ -24,9 +26,9 @@ public interface TradeReport {
 	
 	Instant tradeTime();
 	
-	Integer sequenceNo();
-	
 	Date tradingDay();
+	
+	Integer sequenceNo();
 	
 	Integer brokerOrderSequence();
 }

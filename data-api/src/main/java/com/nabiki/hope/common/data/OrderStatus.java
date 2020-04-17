@@ -12,6 +12,8 @@ import java.util.Date;
 public interface OrderStatus {
 	String symbol();
 	
+	String orderId();
+	
 	TokenByte priceType();
 	
 	TokenByte direction();

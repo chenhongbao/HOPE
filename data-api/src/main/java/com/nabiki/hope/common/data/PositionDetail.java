@@ -29,8 +29,6 @@ public interface PositionDetail {
 	
 	TokenByte tradeType();
 	
-	String combSymbol();
-	
 	Double closeProfitByDate();
 	
 	Double closeProfitByTrade();
@@ -54,8 +52,4 @@ public interface PositionDetail {
 	Integer closeVolume();
 	
 	Double closeAmount();
-	
-	Integer timeFirstVolume();
-	
-	String investUnitId();
 }

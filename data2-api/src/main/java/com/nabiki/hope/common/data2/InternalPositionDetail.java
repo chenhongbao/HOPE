@@ -40,6 +40,8 @@ public interface InternalPositionDetail extends PositionDetail {
 	
 	void tradeType(TokenByte t);
 	
+	String combSymbol();
+	
 	void combSymbol(String s);
 	
 	String exchangeId();
@@ -70,7 +72,11 @@ public interface InternalPositionDetail extends PositionDetail {
 	
 	void closeAmount(Double d);
 	
+	Integer timeFirstVolume();
+	
 	void timeFirstVolume(Integer i);
+	
+	String investUnitId();
 	
 	void investUnitId(String s);
 }

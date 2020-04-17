@@ -23,9 +23,7 @@ public interface InternalOrderStatus extends OrderStatus {
 	
 	void investorId(String s);
 	
-	String orderReference();
-	
-	void orderReference(String s);
+	void orderId(String s);
 	
 	String userId();
 	
