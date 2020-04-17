@@ -2,7 +2,7 @@ package com.nabiki.hope.common.data2;
 
 import java.util.Date;
 
-import com.nabiki.hope.common.data.InputOrder;
+import com.nabiki.hope.common.data.NewOrder;
 import com.nabiki.hope.common.data.TokenByte;
 
 /**
@@ -11,7 +11,7 @@ import com.nabiki.hope.common.data.TokenByte;
  * @author Hongbao Chen
  *
  */
-public interface InternalInputOrder extends InputOrder {
+public interface InternalNewOrder extends NewOrder {
 	String brokerId();
 	
 	void brokerId(String s);

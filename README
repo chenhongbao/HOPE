@@ -1,8 +1,12 @@
 HOPE - Homogeneous Order Processing Environment
 
-HOPE has a complete set of tools to automate your  trading  in financial
-market. Its core components include order/ subaccount management, candle
-generation, risk management, strategy deployment and back testing.
+HOPE is a set of tools to automate your trades in financial market. Its
+core functions include order/sub-account management, candle generation,
+risk management, strategy deployment and back testing.
+
+HOPE is initially  developed for Chinese future market.  It uses CTP[1]
+as the default(also built-in) broker's counter system. If you are using
+a different one, you need to make an adaptor between HOPE and it.
 
 HOPE is built using open source libraries:
 
@@ -10,11 +14,6 @@ HOPE is built using open source libraries:
 2. Jetty[3] - browser-based UI for management.
 3. Common CSV[4] - store/read historical market data.
 4. Protobuf[5] - codec engine for internal data exchange.
-
-Before you start with it, you need to encode the outside data into FIX
-format according to the GUIDE, or decode downstream data from FIX format
-to outside. Don't worry. It is trivial because I have provided some 
-interfaces/adaptors to you.
 
 Lucky with your trades.
 
@@ -25,7 +24,8 @@ Lucky with your trades.
                                                               
 References
 
-[1] FIX(Financial Information eXchange), https://www.fixtrading.org/
+[1] CTP(Comprehensive Transaction Platform) developed by SFIT(Shanghai 
+    Futures Information Technology), http://www.sfit.com.cn/
 [2] Apache Derby, http://db.apache.org/derby/
 [3] Eclipse Jetty, https://www.eclipse.org/jetty/
 [4] Apache Common CSV, https://commons.apache.org/proper/commons-csv/

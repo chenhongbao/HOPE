@@ -9,7 +9,7 @@ import java.util.Date;
  * @author Hongbao Chen
  *
  */
-public interface Trade {
+public interface TradeReport {
 	String orderReference();
 	
 	TokenByte direction();

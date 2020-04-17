@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.Date;
 
 import com.nabiki.hope.common.data.TokenByte;
-import com.nabiki.hope.common.data.Trade;
+import com.nabiki.hope.common.data.TradeReport;
 
 /**
  * Internally used trade report with full attributes.
@@ -12,7 +12,7 @@ import com.nabiki.hope.common.data.Trade;
  * @author Hongbao Chen
  *
  */
-public interface InternalTrade extends Trade {
+public interface InternalTradeReport extends TradeReport {
 	String brokerId();
 	
 	void brokerId(String s);

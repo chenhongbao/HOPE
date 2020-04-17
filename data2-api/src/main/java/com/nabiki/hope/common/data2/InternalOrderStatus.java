@@ -3,7 +3,7 @@ package com.nabiki.hope.common.data2;
 import java.time.Instant;
 import java.util.Date;
 
-import com.nabiki.hope.common.data.Order;
+import com.nabiki.hope.common.data.OrderStatus;
 import com.nabiki.hope.common.data.TokenByte;
 
 /**
@@ -12,7 +12,7 @@ import com.nabiki.hope.common.data.TokenByte;
  * @author Hongbao Chen
  *
  */
-public interface InternalOrder extends Order {
+public interface InternalOrderStatus extends OrderStatus {
 	void symbol(String s);
 	
 	String brokerId();

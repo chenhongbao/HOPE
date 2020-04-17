@@ -9,7 +9,7 @@ package com.nabiki.hope.common.data;
  * @author Hongbao Chen
  *
  */
-public interface InputOrder {
+public interface NewOrder {
 	void symbol(String s);
 	
 	String symbol();

@@ -9,7 +9,7 @@ import java.util.Date;
  * @author Hongbao Chen
  *
  */
-public interface Order {
+public interface OrderStatus {
 	String symbol();
 	
 	TokenByte priceType();
