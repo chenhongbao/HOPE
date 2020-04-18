@@ -28,7 +28,7 @@ public interface Candle {
 	
 	Boolean isDay();
 	
-	Boolean isEndOfDay();
+	Boolean isLastOfDay();
 	
 	Boolean isRealTime();
 	

@@ -81,7 +81,9 @@ public interface Tick {
 
 	Double preSettlementPrice();
 	
-	Boolean isEndOfDay();
+	Boolean isPreMarket();
+	
+	Boolean isPostMarket();
 	
 	Boolean isRealTime();
 
