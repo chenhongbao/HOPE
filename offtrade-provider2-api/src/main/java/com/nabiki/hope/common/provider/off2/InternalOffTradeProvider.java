@@ -1,10 +1,10 @@
-package com.nabiki.hope.common.provider.pre2;
+package com.nabiki.hope.common.provider.off2;
 
 import java.util.Collection;
 
 import com.nabiki.hope.common.data2.InternalAccount;
 import com.nabiki.hope.common.data2.InternalPositionDetail;
-import com.nabiki.hope.common.provider.pre.PreTradeProvider;
+import com.nabiki.hope.common.provider.off.OffTradeProvider;
 
 /**
  * Internal operations to get full attributes data.
@@ -12,7 +12,7 @@ import com.nabiki.hope.common.provider.pre.PreTradeProvider;
  * @author Hongbao Chen
  *
  */
-public interface InternalPreTradeProvider extends PreTradeProvider {
+public interface InternalOffTradeProvider extends OffTradeProvider {
 	InternalAccount internalAccount();
 	
 	Collection<InternalPositionDetail> internalPositions();

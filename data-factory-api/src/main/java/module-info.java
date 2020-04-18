@@ -1,0 +1,3 @@
+module hope.common.factory.data.api {
+	requires transitive hope.common.data2.api;
+}

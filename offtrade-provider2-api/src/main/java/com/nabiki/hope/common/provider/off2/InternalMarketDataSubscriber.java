@@ -1,9 +1,9 @@
-package com.nabiki.hope.common.provider.pre2;
+package com.nabiki.hope.common.provider.off2;
 
 import java.util.Collection;
 
 import com.nabiki.hope.common.provider.conn.Connection;
-import com.nabiki.hope.common.provider.pre.MarketDataSubscriber;
+import com.nabiki.hope.common.provider.off.MarketDataSubscriber;
 
 /**
  * @author Hongbao Chen

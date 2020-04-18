@@ -5,5 +5,5 @@ public interface TradeProvider {
 	
 	Trade newTrade();
 	
-	Trade recallTrade(String id);
+	Trade recallTrade(String id) throws TradeException;
 }

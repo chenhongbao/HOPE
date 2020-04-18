@@ -1,6 +1,6 @@
-module hope.common.provider2.pre.api {
-	requires transitive hope.common.provider.pre.api;
+module hope.common.provider.off2.api {
+	requires transitive hope.common.provider.off.api;
 	requires transitive hope.common.provider.conn.api;
 	requires hope.common.data2.api;
-	exports com.nabiki.hope.common.provider.pre2;
+	exports com.nabiki.hope.common.provider.off2;
 }

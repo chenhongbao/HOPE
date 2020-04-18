@@ -1,4 +1,4 @@
-package com.nabiki.hope.common.provider.pre;
+package com.nabiki.hope.common.provider.off;
 
 import java.util.Collection;
 
@@ -11,7 +11,7 @@ import com.nabiki.hope.common.data.PositionDetail;
  * @author Hongbao Chen
  *
  */
-public interface PreTradeProvider {
+public interface OffTradeProvider {
 	String accountId();
 	
 	Account account();
