@@ -1,10 +1,10 @@
 package com.nabiki.hope.common.provider.conn;
 
-import java.io.Writer;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
 public interface Session {
-	Writer out();
+	OutputStream out();
 	
 	Boolean isClosed();
 	

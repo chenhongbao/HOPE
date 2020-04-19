@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package com.nabiki.hope.data.pb;
+
+message {
+    string message_type = 1;
+    repeated bytes body = 2;
+}

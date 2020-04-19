@@ -1,0 +1,1 @@
+package com.nabiki.hope.service.common.api;
