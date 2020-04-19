@@ -11,72 +11,72 @@ import com.nabiki.hope.common.data.TokenByte;
  * @author Hongbao Chen
  *
  */
-public interface InternalNewOrder extends NewOrder {
-	String brokerId();
+public abstract class InternalNewOrder extends NewOrder {
+	public abstract String brokerId();
 	
-	void brokerId(String s);
+	public abstract void brokerId(String s);
 	
-	String investorId();
+	public abstract String investorId();
 	
-	void investorId(String s);
+	public abstract void investorId(String s);
 	
-	String orderId();
+	public abstract String orderId();
 	
-	void orderId(String s);
+	public abstract void orderId(String s);
 	
-	String userId();
+	public abstract String userId();
 	
-	void userId(String s);
+	public abstract void userId(String s);
 	
-	Date gtdDate();
+	public abstract Date gtdDate();
 	
-	void gtdDate(Date d);
+	public abstract void gtdDate(Date d);
 	
-	TokenByte forceCloseReason();
+	public abstract TokenByte forceCloseReason();
 	
-	void forceCloseReason(TokenByte t);
+	public abstract void forceCloseReason(TokenByte t);
 	
-	Boolean isAutoSuspend();
+	public abstract Boolean isAutoSuspend();
 	
-	void isAutoSuspend(Boolean b);
+	public abstract void isAutoSuspend(Boolean b);
 	
-	String businessUnit();
+	public abstract String businessUnit();
 	
-	void businessUnit(String s);
+	public abstract void businessUnit(String s);
 	
-	Integer requestId();
+	public abstract Integer requestId();
 	
-	void requestId(Integer i);
+	public abstract void requestId(Integer i);
 	
-	Boolean userForceClose();
+	public abstract Boolean userForceClose();
 	
-	void userForceClose(Boolean b);
+	public abstract void userForceClose(Boolean b);
 	
-	Boolean isSwapOrder();
+	public abstract Boolean isSwapOrder();
 	
-	void isSwapOrder(Boolean b);
+	public abstract void isSwapOrder(Boolean b);
 	
-	String exchangeId();
+	public abstract String exchangeId();
 	
-	void exchangeId(String s);
+	public abstract void exchangeId(String s);
 	
-	String investUnitId();
+	public abstract String investUnitId();
 	
-	void investUnitId(String s);
+	public abstract void investUnitId(String s);
 	
-	String currencyId();
+	public abstract String currencyId();
 	
-	void currencyId(String s);
+	public abstract void currencyId(String s);
 	
-	String clientId();
+	public abstract String clientId();
 	
-	void clientId(String s);
+	public abstract void clientId(String s);
 	
-	String ipAddress();
+	public abstract String ipAddress();
 	
-	void ipAddress(String s);
+	public abstract void ipAddress(String s);
 	
-	String macAddress();
+	public abstract String macAddress();
 	
-	void macAddress(String s);
+	public abstract void macAddress(String s);
 }
