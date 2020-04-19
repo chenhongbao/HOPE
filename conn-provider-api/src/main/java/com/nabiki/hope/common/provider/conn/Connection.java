@@ -10,7 +10,6 @@ public interface Connection {
 	
 	void disconnect();
 	
-	void packetListener(PacketListener listener);
-	
-	void errorListener(ErrorListener listener);
+	void listener(Listener listener);
+
 }
