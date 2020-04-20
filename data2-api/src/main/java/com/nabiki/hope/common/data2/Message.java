@@ -1,4 +1,4 @@
-package com.nabiki.hope.service.common.api;
+package com.nabiki.hope.common.data2;
 
 import java.util.Collection;
 

@@ -1,6 +1,4 @@
-package com.nabiki.hope.service.common.api;
-
-import com.nabiki.hope.common.data.CommonException;
+package com.nabiki.hope.common.data2;
 
 public interface MessageHandler {
 	void onMessage(Message m);

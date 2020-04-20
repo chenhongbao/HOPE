@@ -1,6 +1,6 @@
 package com.nabiki.hope.common.provider.trade;
 
-import com.nabiki.hope.common.data.CommonException;
+import com.nabiki.hope.common.data2.CommonException;
 
 public class TradeException extends CommonException {
 	private static final long serialVersionUID = 4477747369912474506L;

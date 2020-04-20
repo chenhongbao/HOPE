@@ -1,6 +1,6 @@
 package com.nabiki.hope.common.provider.off;
 
-import com.nabiki.hope.common.data.CommonException;
+import com.nabiki.hope.common.data2.CommonException;
 
 public class MarketDataSubscriptionException extends CommonException {
 	private static final long serialVersionUID = -5558482392288213255L;

@@ -5,6 +5,7 @@ import com.nabiki.hope.common.data2.InternalNewOrder;
 import com.nabiki.hope.common.data2.InternalOrderStatus;
 import com.nabiki.hope.common.data2.InternalPositionDetail;
 import com.nabiki.hope.common.data2.InternalTradeReport;
+import com.nabiki.hope.common.data2.Message;
 
 public interface DataFactory {
 	InternalAccount internalAccount();
@@ -36,4 +37,10 @@ public interface DataFactory {
 	InternalTradeReport internalTradeReportFromBytes(byte[] b);
 	
 	byte[] internalTradeReportToBytes(InternalTradeReport i);
+	
+	Message message();
+	
+	Message message(byte[] b);
+	
+	byte[] message(Message m);
 }

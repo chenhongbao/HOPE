@@ -1,4 +1,4 @@
-package com.nabiki.hope.common.data;
+package com.nabiki.hope.common.data2;
 
 /**
  * @author Hongbao Chen
