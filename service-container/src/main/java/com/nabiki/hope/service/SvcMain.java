@@ -3,9 +3,9 @@ package com.nabiki.hope.service;
 import java.io.IOException;
 
 import com.nabiki.hope.common.data2.CommonException;
-import com.nabiki.hope.common.data2.MessageHandler;
 import com.nabiki.hope.common.factory.data.DataFactory;
 import com.nabiki.hope.common.factory.provider.ProviderFactory;
+import com.nabiki.hope.service.api.MessageHandler;
 
 public class SvcMain {
 	

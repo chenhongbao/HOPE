@@ -14,6 +14,7 @@ HOPE is built using open source libraries:
 2. Jetty[3] - browser-based UI for management.
 3. Common CSV[4] - store/read historical market data.
 4. Protobuf[5] - codec engine for internal data exchange.
+5. JAXB[6] - read/write data object as XML.
 
 Lucky with your trades.
 
@@ -30,3 +31,4 @@ References
 [3] Eclipse Jetty, https://www.eclipse.org/jetty/
 [4] Apache Common CSV, https://commons.apache.org/proper/commons-csv/
 [5] Google Protobuf, https://github.com/protocolbuffers/protobuf/
+[6] JAXB, https://javaee.github.io/jaxb-v2/

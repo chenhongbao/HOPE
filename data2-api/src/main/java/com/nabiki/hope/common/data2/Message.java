@@ -7,6 +7,10 @@ public interface Message {
 	
 	void messageType(String s);
 	
+	String ackType();
+	
+	void ackType(String s);
+	
 	byte[] element(Integer i);
 	
 	Integer bodySize();

@@ -5,12 +5,12 @@ import com.nabiki.hope.service.api.ContainerStateListener;
 public class StateNotifier implements ContainerStateListener {
 
 	public StateNotifier() {
-		// TODO Auto-generated constructor stub
+		// TODO constructor
 	}
 
 	@Override
 	public void onState(ContainerState s) {
-		// TODO Auto-generated method stub
+		// TODO process state change
 
 	}
 	

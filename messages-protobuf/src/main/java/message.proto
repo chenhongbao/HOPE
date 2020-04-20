@@ -4,5 +4,6 @@ package com.nabiki.hope.data.pb;
 
 message {
     string message_type = 1;
-    repeated bytes body = 2;
+    string ack_type = 2;
+    repeated bytes body = 3;
 }

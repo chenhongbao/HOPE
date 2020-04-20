@@ -1,49 +1,23 @@
 package com.nabiki.hope.common.provider.conn;
 
-public class ConnectionProfile {
-	String url;
-	String user;
-	String domain;
-	String password;
-	Integer port;
+public interface ConnectionProfile {
+	String url();
 	
-	public String url() {
-		return this.url;
-	}
+	void url(String s);
 	
-	public void url(String s) {
-		this.url = s;
-	}
+	Integer port();
 	
-	public Integer port() {
-		return this.port;
-	}
+	void port(Integer i);
 	
-	public void port(Integer i) {
-		this.port = i;
-	}
+	String user();
 	
-	public String user() {
-		return this.user;
-	}
+	void user(String s);
 	
-	public void user(String s) {
-		this.user = s;
-	}
+	String password();
 	
-	public String password() {
-		return this.password;
-	}
+	void password(String s);
 	
-	public void password(String s) {
-		this.password = s;
-	}
+	String domain();
 	
-	public String domain() {
-		return this.domain;
-	}
-	
-	public void domain(String s) {
-		this.domain = s;
-	}
+	void domain(String s);
 }
