@@ -13,7 +13,7 @@ public class UdpInputStream extends InputStream {
     private final DatagramPacket packet;
 
     // Maximum safe UDP body size.
-    private int bufSize = 508;
+    private int bufSize = UdpDefine.MAX_BODY_SIZE;
 
     // Mark the next byte available for reading.
     private int mark = 0;

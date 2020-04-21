@@ -14,7 +14,7 @@ public class UdpOutputStream extends OutputStream {
     private int mark = 0;
 
     // Maximum safe UDP body size.
-    private int bufSize = 508;
+    private int bufSize = UdpDefine.MAX_BODY_SIZE;
 
     private final DatagramSocket udp;
 

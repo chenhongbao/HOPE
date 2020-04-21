@@ -41,8 +41,8 @@ public class Environment {
 			errPort = profile.errProfile().port();
 			
 			// Replace default system output stream with UDP enabled output stream.
-			System.setOut(new PrintStream(new UdpOutputStream(outPort, outAddress)));
-			System.setOut(new PrintStream(new UdpOutputStream(errPort, errAddress)));
+			System.setOut(new PrintStream(new UdpOutputStream(outPort, outAddress), true));
+			System.setOut(new PrintStream(new UdpOutputStream(errPort, errAddress), true));
 		} catch (SocketException e) {
 			throw new CommonException("Fail creating UDP socket to remote system output host.");
 		} catch (UnknownHostException e) {
