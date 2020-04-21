@@ -10,7 +10,6 @@ import javax.xml.bind.JAXB;
 
 import com.nabiki.hope.common.data2.CommonException;
 import com.nabiki.hope.service.api.PreDefine;
-import com.nabiki.hope.service.container.XmlConnProfile;
 import com.nabiki.hope.service.udp.UdpOutputStream;
 
 public class Environment {
