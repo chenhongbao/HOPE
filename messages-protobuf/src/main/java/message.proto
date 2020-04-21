@@ -6,4 +6,6 @@ message {
     string message_type = 1;
     string ack_type = 2;
     repeated bytes body = 3;
+    int error_code = 4;
+    string error_message = 5;
 }

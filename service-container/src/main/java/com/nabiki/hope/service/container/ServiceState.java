@@ -1,6 +1,6 @@
-package com.nabiki.hope.service;
+package com.nabiki.hope.service.container;
 
-public enum ContainerState {
+public enum ServiceState {
 	STARTING,
 	STARTED,
 	STOPPING,

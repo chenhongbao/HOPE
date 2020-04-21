@@ -18,4 +18,12 @@ public interface Message {
 	void addElement(byte[] b);
 	
 	Collection<byte[]> body();
+	
+	void errorCode(Integer i);
+	
+	Integer errorCode();
+	
+	void errorMessage(String s);
+	
+	String errorMessage();
 }

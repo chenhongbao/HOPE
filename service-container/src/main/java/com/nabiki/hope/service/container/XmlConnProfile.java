@@ -1,4 +1,4 @@
-package com.nabiki.hope.service;
+package com.nabiki.hope.service.container;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

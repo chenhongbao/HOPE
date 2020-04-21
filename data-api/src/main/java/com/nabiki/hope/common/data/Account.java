@@ -11,6 +11,12 @@ import java.util.Date;
 public interface Account {
 	String accountId();
 	
+	/**
+	 * Account state, could be locked open, locked close, locked all, or others.
+	 * @return account state
+	 */
+	TokenByte accountState();
+	
 	Double preMortgage();
 	
 	Double preCredit();
