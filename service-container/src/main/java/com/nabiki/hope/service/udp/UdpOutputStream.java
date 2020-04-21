@@ -23,8 +23,13 @@ public class UdpOutputStream extends OutputStream {
     InetAddress address;
 
     public UdpOutputStream(int port, InetAddress address) throws SocketException {
-        this.buffer = new byte[this.bufSize];
         this.udp = new DatagramSocket();
+		this.buffer = new byte[this.bufSize];
+    }
+    
+    public UdpOutputStream(int port, InetAddress address, OutputStream o) throws SocketException {
+		this.udp = new DatagramSocket();
+        // TODO implement a second constructor
     }
 
     @Override

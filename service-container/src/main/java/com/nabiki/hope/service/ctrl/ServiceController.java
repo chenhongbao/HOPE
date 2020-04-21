@@ -1,5 +1,6 @@
 package com.nabiki.hope.service.ctrl;
 
+import com.nabiki.hope.common.data2.CommonException;
 import com.nabiki.hope.common.factory.data.DataFactory;
 import com.nabiki.hope.common.factory.provider.ProviderFactory;
 import com.nabiki.hope.service.api.MessageHandler;
@@ -10,23 +11,25 @@ import com.nabiki.hope.service.api.ServiceStateListener;
  * @author Hongbao Chen
  *
  */
-public class ServiceController {
+public class ServiceController extends FileWatcher {
 	
-	public ServiceController() {
+	public ServiceController() throws CommonException {
+		super(null);
 	}
 
-	public ServiceController(ServiceStateListener listener) {
+	public ServiceController(ServiceStateListener listener) throws CommonException {
+		super(null);
 	}
 
-	public void start() {
+	private void startContainer() {
 		
 	}
 	
-	public void stop() {
+	private void stopContainer() {
 		
 	}
 	
-	public void restart() {
+	private void restartContainer() {
 		
 	}
 	
@@ -44,5 +47,11 @@ public class ServiceController {
 	private MessageHandler messageHandler() {
 		// TODO load message handler from jar file
 		return null;
+	}
+
+	@Override
+	public void onTextContentChange(String from, String to) {
+		// TODO implement change process
+		
 	}
 }
