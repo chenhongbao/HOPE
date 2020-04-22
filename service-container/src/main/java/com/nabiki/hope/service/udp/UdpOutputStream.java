@@ -36,11 +36,11 @@ public class UdpOutputStream extends OutputStream {
     public void write(int b) throws IOException {
         // Socket is closed or no buffer, can't write.
         if (this.udp.isClosed() || this.bufSize == 0) {
-            return;
+        	throw new IOException("Output stream has been closed, can't write.");
         }
 
         if (this.mark >= this.bufSize) {
-            throw new IOException("Buffer is overflow, please flush stream for each writing.");
+            throw new IOException("Buffer is overflow, flush stream for each message.");
         }
 
         this.buffer[this.mark++] = (byte) b;
@@ -50,7 +50,7 @@ public class UdpOutputStream extends OutputStream {
     public void flush() throws IOException {
         // Socket is closed or no data in buffer, no need to flush.
         if (this.udp.isClosed() || this.mark == 0) {
-            return;
+        	throw new IOException("Output stream has been closed, can't flush.");
         }
 
         var packet = new DatagramPacket(this.buffer, 0, this.mark, this.address, this.port);

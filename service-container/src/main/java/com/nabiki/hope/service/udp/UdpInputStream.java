@@ -31,11 +31,11 @@ public class UdpInputStream extends InputStream {
     public int read() throws IOException {
         // Stream has been closed, can't read.
         if (this.mark == -1) {
-            throw new IOException("UDP input stream has been closed and it is unreadable.");
+            throw new IOException("UDP input stream has been closed and unreadable.");
         }
 
         // If all data in buffer has been read, receive the next packet.
-        if (this.mark >= this.actualRecvSize) {
+        while (this.mark >= this.actualRecvSize) {
             this.mark = 0;
             this.udp.receive(this.packet);
             this.actualRecvSize = this.packet.getLength();
