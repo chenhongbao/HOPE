@@ -19,12 +19,25 @@ public abstract class FileWatcher implements Runnable {
 	
 	// Watcher's event processing thread
 	private Thread eventProc;
-
-	public FileWatcher(Path p) throws CommonException {
-		this.watchedPath = p;
-
+	
+	public FileWatcher() throws CommonException {
 		tryCreateFile(this.watchedPath);
 		installWatcher();
+	}
+
+	public FileWatcher(Path fp) throws CommonException {
+		this.watchedPath = fp;
+		tryCreateFile(this.watchedPath);
+		installWatcher();
+	}
+	
+	public void watch() {
+		if (this.eventProc != null && this.eventProc.isAlive()) {
+			return;
+		}
+		
+		this.eventProc = new Thread(this);
+		this.eventProc.start();
 	}
 
 	@Override
@@ -105,9 +118,6 @@ public abstract class FileWatcher implements Runnable {
         try {
         	this.watcher = FileSystems.getDefault().newWatchService();
 			this.watchedPath.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);
-			
-			this.eventProc = new Thread(this);
-			this.eventProc.start();
 		} catch (IOException e) {
 			throw new CommonException("Fail registering watcher on " + this.watchedPath.toAbsolutePath());
 		}

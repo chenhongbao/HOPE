@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.nabiki.hope.common.provider.conn.ConnectionProfile;
 
 @XmlRootElement
-public class XmlConnProfile implements ConnectionProfile {
+public class CoreConnProfile implements ConnectionProfile {
 	@XmlElement
 	String url;
 	
@@ -22,7 +22,7 @@ public class XmlConnProfile implements ConnectionProfile {
 	@XmlElement
 	Integer port;
 
-	public XmlConnProfile() {
+	public CoreConnProfile() {
 	}
 	
 	@Override

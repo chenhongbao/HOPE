@@ -41,6 +41,6 @@ public class Container {
 
 	private ConnectionProfile connProfile() {
 		// Manually checked, it won't throw exception.
-		return JAXB.unmarshal(new File(env.parentDirectory(), PreDefine.coreConnProfile), XmlConnProfile.class);
+		return JAXB.unmarshal(new File(env.parentDirectory(), PreDefine.CORE_CONN_XML), CoreConnProfile.class);
 	}
 }
