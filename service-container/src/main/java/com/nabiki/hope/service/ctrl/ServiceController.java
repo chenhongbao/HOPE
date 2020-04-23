@@ -1,7 +1,14 @@
 package com.nabiki.hope.service.ctrl;
 
 import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 import javax.xml.bind.JAXB;
 
@@ -12,7 +19,6 @@ import com.nabiki.hope.service.Environment;
 import com.nabiki.hope.service.api.MessageHandler;
 import com.nabiki.hope.service.api.PreDefine;
 import com.nabiki.hope.service.api.ServiceStateListener;
-import com.nabiki.hope.service.container.ComponentSettingProfile;
 import com.nabiki.hope.service.container.Container;
 import com.nabiki.hope.service.container.ServiceState;
 
@@ -28,6 +34,10 @@ public class ServiceController extends FileWatcher {
 	private Environment env;
 	private ServiceStateListener listener;
 	private Container container;
+
+	// Close the loader and set null before each loading.
+	// So that it is possible to load a modified jar class.
+	private URLClassLoader clzLoader;
 
 	public ServiceController(Environment e) throws CommonException {
 		super(Paths.get(e.parentDirectory().getAbsolutePath(), PreDefine.WATCHED_CTRL_FILE));
@@ -64,8 +74,7 @@ public class ServiceController extends FileWatcher {
 
 	private void startContainer() throws CommonException {
 		callStateListener(ServiceState.STARTING);
-		this.container = new Container(dataFactory(), providerFactory(), messageHandler(), this.env);
-		this.container.run();
+		setupContainer();
 		callStateListener(ServiceState.STARTED);
 	}
 
@@ -84,30 +93,102 @@ public class ServiceController extends FileWatcher {
 		System.gc();
 
 		callStateListener(ServiceState.RESTARTING);
-		this.container = new Container(dataFactory(), providerFactory(), messageHandler(), this.env);
-		this.container.run();
+		setupContainer();
 		callStateListener(ServiceState.RESTARTED);
 	}
-	
+
 	private void exitProgram() throws CommonException {
 		stopContainer();
 		callStateListener(ServiceState.EXIT);
 	}
 
-	private DataFactory dataFactory() {
-		// TODO load data factory from jar file
-		return null;
-
+	private void setupContainer() throws CommonException {
+		setupClassLoader();
+		this.container = new Container(dataFactory(), providerFactory(), messageHandler(), this.env);
+		this.container.run();
 	}
 
-	private ProviderFactory providerFactory() {
-		// TODO load provider factory from jar file
-		return null;
+	private void setupClassLoader() throws CommonException {
+		if (this.clzLoader != null) {
+			try {
+				// Assume it closes all closable object in class loader, then clears internal buffer.
+				this.clzLoader.close();
+				this.clzLoader = null;
+			} catch (IOException | SecurityException e) {
+				throw new CommonException("Fail closing class loader. " + e.getMessage());
+			}
+		}
+
+		// Construct URL from setting.
+		var data = getUrl(this.env.parentDirectory().getAbsolutePath(), this.compoProfile.dataFactory().jar());
+		var prov = getUrl(this.env.parentDirectory().getAbsolutePath(), this.compoProfile.providerFactory().jar());
+		var msg = getUrl(this.env.parentDirectory().getAbsolutePath(), this.compoProfile.messageHandler().jar());
+		// Use system's class loader as parent class loader.
+		this.clzLoader = new URLClassLoader(UUID.randomUUID().toString(), new URL[] {data, prov, msg}, 
+				System.class.getClassLoader());
 	}
 
-	private MessageHandler messageHandler() {
-		// TODO load message handler from jar file
-		return null;
+	private URL getUrl(String root, String path) throws CommonException {
+		String s = null;
+		if (path.startsWith("http:") || path.startsWith("file:")) {
+			s = "jar:" + path;
+		} else if (new File(path).isAbsolute()) {
+			s = "jar:file:" + path;
+		} else {
+			if (!root.endsWith("/") && !root.endsWith("\\") && !path.startsWith("/") && !path.startsWith("\\")) {
+				s = root + "\\" + path;
+			} else {
+				s = root + path;
+			}
+		}
+		
+		if (!s.endsWith("!/")) {
+			s += "!/";
+		}
+		
+		try {
+			return new URL(s);
+		} catch (MalformedURLException e) {
+			throw new CommonException("Fail getting valid URL for jar.");
+		}
+	}
+	
+	private Class<?> getClass(String name) throws CommonException {
+		try {
+			return Class.forName(name, false, this.clzLoader);
+		} catch (ClassNotFoundException e) {
+			throw new CommonException("Can't find class within loader. " + e.getMessage());
+		}
+	}
+
+	private DataFactory dataFactory() throws CommonException {
+		var clz = getClass(this.compoProfile.dataFactory().classPath());
+		try {
+			return (DataFactory)clz.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			throw new CommonException("Fail getting instance of class. " + e.getMessage());
+		}
+	}
+
+	private ProviderFactory providerFactory() throws CommonException {
+		var clz = getClass(this.compoProfile.providerFactory().classPath());
+		try {
+			return (ProviderFactory)clz.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			throw new CommonException("Fail getting instance of class. " + e.getMessage());
+		}
+	}
+
+	private MessageHandler messageHandler() throws CommonException {
+		var clz = getClass(this.compoProfile.messageHandler().classPath());
+		try {
+			return (MessageHandler)clz.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException e) {
+			throw new CommonException("Fail getting instance of class. " + e.getMessage());
+		}
 	}
 
 	@Override

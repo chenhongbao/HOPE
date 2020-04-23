@@ -1,4 +1,4 @@
-package com.nabiki.hope.service.container;
+package com.nabiki.hope.service.ctrl;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,7 +17,7 @@ public class ComponentSettingProfile {
 	public ComponentSettingProfile() {
 	}
 
-	public JarPathProfile messageHandlerProfile() {
+	public JarPathProfile messageHandler() {
 		return this.messageHandler;
 	}
 	
