@@ -40,7 +40,12 @@ public class UdpOutputStream extends OutputStream {
         }
 
         if (this.mark >= this.bufSize) {
-            throw new IOException("Buffer is overflow, flush stream for each message.");
+        	// When buffer is overflow, just do nothing and return silently.
+        	// Because caller doesn't know the internal buffer limit, it is likely to write that more than
+        	// buffer can hold. If it throws exception, the Printer/Writer/Stream whose uses this object as 
+        	// underlying output will stop writing and set the bit and then return. And the possibly following
+        	// flush operation is dismissed, then nothing is written out. TOO BAD.
+            return;
         }
 
         this.buffer[this.mark++] = (byte) b;
