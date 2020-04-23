@@ -24,6 +24,10 @@ public class Container {
 	
 	public Container(DataFactory d, ProviderFactory p, MessageHandler m, Environment e) throws CommonException {
 		this.connProfile = connProfile();
+		if (this.connProfile == null) {
+			throw new CommonException("Fail loading core connection profile.");
+		}
+		
 		this.dataFactory = d;
 		this.provFactory = p;
 		this.msgHandler = m;
@@ -37,6 +41,17 @@ public class Container {
 		
 		this.connection.listener(new ConnectionListener(this.dataFactory, this.msgHandler));
 		this.connection.connect(this.connProfile);
+	}
+	
+	public void stop() throws CommonException {
+		this.connection.disconnect();
+		// Reset fields
+		this.connection = null;
+		this.connProfile = null;
+		this.dataFactory = null;
+		this.provFactory = null;
+		this.msgHandler = null;
+		this.msgHandler = null;
 	}
 
 	private ConnectionProfile connProfile() {

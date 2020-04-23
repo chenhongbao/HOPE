@@ -35,6 +35,10 @@ public class Environment {
 		try {
 			var profile = JAXB.unmarshal(
 					new File(this.parentDirectory(), PreDefine.SYS_STDOS_CONN_XML), SystemOutConnProfile.class);
+			if (profile == null) {
+				throw new CommonException("Fail loading system standard output profile.");
+			}
+			
 			outAddress = InetAddress.getByName(profile.outProfile.ip());
 			outPort = profile.outProfile().port();
 			errAddress = InetAddress.getByName(profile.errProfile().ip());
