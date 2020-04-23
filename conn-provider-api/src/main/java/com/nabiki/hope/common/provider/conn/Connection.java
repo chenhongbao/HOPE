@@ -6,12 +6,14 @@ public interface Connection {
 	/**
 	 * Connect peer with previous profile.
 	 */
-	void connect() throws CommonException;
+	void open() throws CommonException;
 	
-	void connect(ConnectionProfile profile) throws CommonException;
+	void open(ConnectionProfile profile) throws CommonException;
 	
-	void disconnect() throws CommonException;
+	void close() throws CommonException;
 	
 	void listener(Listener listener);
+	
+	Boolean isClosed();
 
 }

@@ -79,7 +79,10 @@ public class ServiceController extends FileWatcher {
 
 	private void stopContainer() throws CommonException {
 		callStateListener(ServiceState.STOPPING);
-		this.container.stop();
+		if (this.container != null) {
+			this.container.stop();
+			this.container = null;
+		}
 		callStateListener(ServiceState.STOPPED);
 	}
 
@@ -110,7 +113,8 @@ public class ServiceController extends FileWatcher {
 	private void setupClassLoader() throws CommonException {
 		if (this.clzLoader != null) {
 			try {
-				// Assume it closes all closable object in class loader, then clears internal buffer.
+				// Assume it closes all closable object in class loader, then clears internal
+				// buffer.
 				this.clzLoader.close();
 				this.clzLoader = null;
 			} catch (IOException | SecurityException e) {
@@ -123,7 +127,7 @@ public class ServiceController extends FileWatcher {
 		var prov = getUrl(this.env.parentDirectory().getAbsolutePath(), this.compoProfile.providerFactory().jar());
 		var msg = getUrl(this.env.parentDirectory().getAbsolutePath(), this.compoProfile.messageHandler().jar());
 		// Use system's class loader as parent class loader.
-		this.clzLoader = new URLClassLoader(UUID.randomUUID().toString(), new URL[] {data, prov, msg}, 
+		this.clzLoader = new URLClassLoader(UUID.randomUUID().toString(), new URL[] { data, prov, msg },
 				System.class.getClassLoader());
 	}
 
@@ -140,18 +144,18 @@ public class ServiceController extends FileWatcher {
 				s = root + path;
 			}
 		}
-		
+
 		if (!s.endsWith("!/")) {
 			s += "!/";
 		}
-		
+
 		try {
 			return new URL(s);
 		} catch (MalformedURLException e) {
 			throw new CommonException("Fail getting valid URL for jar.");
 		}
 	}
-	
+
 	private Class<?> getClass(String name) throws CommonException {
 		try {
 			return Class.forName(name, false, this.clzLoader);
@@ -163,7 +167,7 @@ public class ServiceController extends FileWatcher {
 	private DataFactory dataFactory() throws CommonException {
 		var clz = getClass(this.compoProfile.dataFactory().classPath());
 		try {
-			return (DataFactory)clz.getDeclaredConstructor().newInstance();
+			return (DataFactory) clz.getDeclaredConstructor().newInstance();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			throw new CommonException("Fail getting instance of class. " + e.getMessage());
@@ -173,7 +177,7 @@ public class ServiceController extends FileWatcher {
 	private ProviderFactory providerFactory() throws CommonException {
 		var clz = getClass(this.compoProfile.providerFactory().classPath());
 		try {
-			return (ProviderFactory)clz.getDeclaredConstructor().newInstance();
+			return (ProviderFactory) clz.getDeclaredConstructor().newInstance();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			throw new CommonException("Fail getting instance of class. " + e.getMessage());
@@ -183,7 +187,7 @@ public class ServiceController extends FileWatcher {
 	private MessageHandler messageHandler() throws CommonException {
 		var clz = getClass(this.compoProfile.messageHandler().classPath());
 		try {
-			return (MessageHandler)clz.getDeclaredConstructor().newInstance();
+			return (MessageHandler) clz.getDeclaredConstructor().newInstance();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			throw new CommonException("Fail getting instance of class. " + e.getMessage());

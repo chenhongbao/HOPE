@@ -40,11 +40,13 @@ public class Container {
 		}
 		
 		this.connection.listener(new ConnectionListener(this.dataFactory, this.msgHandler));
-		this.connection.connect(this.connProfile);
+		this.connection.open(this.connProfile);
 	}
 	
 	public void stop() throws CommonException {
-		this.connection.disconnect();
+		if (this.connection != null && !this.connection.isClosed()) {
+			this.connection.close();
+		}
 		// Reset fields
 		this.connection = null;
 		this.connProfile = null;
