@@ -88,6 +88,11 @@ public class ServiceController extends FileWatcher {
 		this.container.run();
 		callStateListener(ServiceState.RESTARTED);
 	}
+	
+	private void exitProgram() throws CommonException {
+		stopContainer();
+		callStateListener(ServiceState.EXIT);
+	}
 
 	private DataFactory dataFactory() {
 		// TODO load data factory from jar file
@@ -117,6 +122,9 @@ public class ServiceController extends FileWatcher {
 				break;
 			case PreDefine.CTRL_CMD_RESTART:
 				restartContainer();
+				break;
+			case PreDefine.CTRL_CMD_EXIT:
+				exitProgram();
 				break;
 			default:
 				System.err.println("Unkown command for service controller: " + to);

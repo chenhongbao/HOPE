@@ -17,7 +17,7 @@ public enum ServiceState {
 	STOPPING,
 	
 	/**
-	 * Service is stopped and about to exit the program.
+	 * Service is stopped.
 	 */
 	STOPPED,
 	
@@ -34,5 +34,10 @@ public enum ServiceState {
 	/**
 	 * Service controller is stopping container for upcoming restart.
 	 */
-	RESTART_STOPPING
+	RESTART_STOPPING,
+	
+	/**
+	 * Program is about to exit.
+	 */
+	EXIT
 }

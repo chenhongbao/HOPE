@@ -9,4 +9,5 @@ public class PreDefine {
 	final public static String CTRL_CMD_START = "start";
 	final public static String CTRL_CMD_STOP = "stop";
 	final public static String CTRL_CMD_RESTART = "restart";
+	final public static String CTRL_CMD_EXIT = "exit";
 }

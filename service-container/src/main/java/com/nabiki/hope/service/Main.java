@@ -19,7 +19,7 @@ public class Main {
 			this.serviceController = new ServiceController(this.notifier, this.env);
 
 			// wait for container stopped
-			this.notifier.waitState(ServiceState.STOPPED);
+			this.notifier.waitState(ServiceState.EXIT);
 		} catch (CommonException c) {
 			// TODO common exception
 		} catch (Exception e) {
