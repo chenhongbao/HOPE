@@ -25,6 +25,12 @@ public class Main {
 		} catch (Exception e) {
 			// TODO generic exception
 		} finally {
+			try {
+				this.serviceController.stopWatcher();
+			} catch (CommonException e) {
+				System.err.println("Exiting program encounters error. " + e.getMessage());
+			}
+			
 			// TODO exit ops
 		}
 	}

@@ -57,7 +57,7 @@ public class ServiceController extends FileWatcher {
 		if (this.compoProfile == null) {
 			throw new CommonException("Fail loading component setting profile.");
 		}
-
+		// Watching file.
 		super.watch();
 	}
 
