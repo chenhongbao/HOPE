@@ -52,9 +52,11 @@ public class ServiceController extends FileWatcher {
 	}
 
 	private void prepare() throws CommonException {
-		this.compoProfile = JAXB.unmarshal(new File(this.env.parentDirectory(), PreDefine.COMPO_PATH_XML),
-				ComponentSettingProfile.class);
+		var f = new File(this.env.parentDirectory(), PreDefine.COMPO_PATH_XML);
+		this.compoProfile = JAXB.unmarshal(f,ComponentSettingProfile.class);
 		if (this.compoProfile == null) {
+			// Write a sample XML.
+			JAXB.marshal(new ComponentSettingProfile(), f);
 			throw new CommonException("Fail loading component setting profile.");
 		}
 		// Watching file.

@@ -23,8 +23,11 @@ public class Container {
 	private Environment env;
 	
 	public Container(DataFactory d, ProviderFactory p, MessageHandler m, Environment e) throws CommonException {
-		this.connProfile = connProfile();
+		var f = new File(env.parentDirectory(), PreDefine.CORE_CONN_XML);
+		this.connProfile = JAXB.unmarshal(f, CoreConnProfile.class);
 		if (this.connProfile == null) {
+			// Write a sample XML.
+			JAXB.marshal(new CoreConnProfile(), f);
 			throw new CommonException("Fail loading core connection profile.");
 		}
 		
@@ -54,10 +57,5 @@ public class Container {
 		this.provFactory = null;
 		this.msgHandler = null;
 		this.msgHandler = null;
-	}
-
-	private ConnectionProfile connProfile() {
-		// Manually checked, it won't throw exception.
-		return JAXB.unmarshal(new File(env.parentDirectory(), PreDefine.CORE_CONN_XML), CoreConnProfile.class);
 	}
 }

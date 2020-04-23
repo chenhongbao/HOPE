@@ -12,6 +12,8 @@ public class SystemOutConnProfile {
 	public SocketAddressProfile errProfile;
 
 	public SystemOutConnProfile() {
+		this.outProfile = new SocketAddressProfile();
+		this.errProfile = new SocketAddressProfile();
 	}
 
 	public SocketAddressProfile outProfile() {

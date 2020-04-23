@@ -33,9 +33,11 @@ public class Environment {
 		int outPort = 0, errPort = 0;
 		
 		try {
-			var profile = JAXB.unmarshal(
-					new File(this.parentDirectory(), PreDefine.SYS_STDOS_CONN_XML), SystemOutConnProfile.class);
+			var file = new File(this.parentDirectory(), PreDefine.SYS_STDOS_CONN_XML);
+			var profile = JAXB.unmarshal(file, SystemOutConnProfile.class);
 			if (profile == null) {
+				// Write a sample setting XML.
+				JAXB.marshal(new SystemOutConnProfile(), file);
 				throw new CommonException("Fail loading system standard output profile.");
 			}
 			

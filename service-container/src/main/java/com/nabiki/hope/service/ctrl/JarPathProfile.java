@@ -12,6 +12,8 @@ public class JarPathProfile {
 	public String classPath;
 
 	public JarPathProfile() {
+		this.jar = "";
+		this.classPath = "";
 	}
 
 	public String jar() {

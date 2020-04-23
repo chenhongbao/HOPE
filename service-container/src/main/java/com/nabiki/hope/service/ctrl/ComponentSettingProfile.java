@@ -15,6 +15,9 @@ public class ComponentSettingProfile {
 	public JarPathProfile providerFactory;
 
 	public ComponentSettingProfile() {
+		this.messageHandler = new JarPathProfile();
+		this.dataFactory = new JarPathProfile();
+		this.providerFactory = new JarPathProfile();
 	}
 
 	public JarPathProfile messageHandler() {

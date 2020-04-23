@@ -12,6 +12,8 @@ public class SocketAddressProfile {
 	public Integer port;
 
 	public SocketAddressProfile() {
+		this.ip = "";
+		this.port = 0;
 	}
 	
 	public String ip() {

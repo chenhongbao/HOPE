@@ -23,6 +23,11 @@ public class CoreConnProfile implements ConnectionProfile {
 	Integer port;
 
 	public CoreConnProfile() {
+		this.url = "";
+		this.user = "";
+		this.domain = "";
+		this.password = "";
+		this.port = 0;
 	}
 	
 	@Override
