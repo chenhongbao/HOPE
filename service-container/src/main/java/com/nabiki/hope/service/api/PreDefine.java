@@ -10,4 +10,10 @@ public class PreDefine {
 	final public static String CTRL_CMD_STOP = "stop";
 	final public static String CTRL_CMD_RESTART = "restart";
 	final public static String CTRL_CMD_EXIT = "exit";
+	
+	final public static String ACK_MSG = "msg";
+	final public static String ACK_RECV = "recv";
+	final public static String ACK_NO = "no_ack";
+	
+	final public static String MSG_ACK_RECV = "ack_recv";
 }

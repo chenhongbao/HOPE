@@ -4,6 +4,8 @@ import com.nabiki.hope.common.data2.CommonException;
 import com.nabiki.hope.common.data2.Message;
 
 public interface MessageHandler {
+	void onStart();
+	
 	void onMessage(Message m);
 	
 	Message onRpcRequest(Message m);
@@ -11,4 +13,6 @@ public interface MessageHandler {
 	void onError(CommonException e);
 	
 	void onError(CommonException e, Message m);
+	
+	void onStop();
 }

@@ -21,17 +21,15 @@ public class Main {
 			// wait for container stopped
 			this.notifier.waitState(ServiceState.EXIT);
 		} catch (CommonException c) {
-			// TODO common exception
+			System.err.println("Unhandled common error. " + c.getMessage());
 		} catch (Exception e) {
-			// TODO generic exception
+			System.err.println("Unhandled unknown error. " + e.getMessage());
 		} finally {
 			try {
 				this.serviceController.stopWatcher();
 			} catch (CommonException e) {
 				System.err.println("Exiting program encounters error. " + e.getMessage());
 			}
-			
-			// TODO exit ops
 		}
 	}
 }
